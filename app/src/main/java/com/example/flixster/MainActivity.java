@@ -27,22 +27,22 @@ public class MainActivity extends AppCompatActivity {
     //This tag will be used to log data
     public static final String TAG = "MainActivity";
 
-    List<Movie> movies;
+    List<Movie> mmovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        RecyclerView rvMovies = findViewById(R.id.rvMovies);
-        movies = new ArrayList<>();
+        RecyclerView mrvMovies = findViewById(R.id.rvMovies);
+        mmovies = new ArrayList<>();
 
         // Create the adapter
-        MovieAdapter movieAdapter = new MovieAdapter(this, movies);
+        MovieAdapter mmovieAdapter = new MovieAdapter(this, mmovies);
 
         // Set the adapter on the recycler view
-        rvMovies.setAdapter(movieAdapter);
+        mrvMovies.setAdapter(mmovieAdapter);
         // Set a layout manager on the recycler view
-        rvMovies.setLayoutManager(new LinearLayoutManager(this));
+        mrvMovies.setLayoutManager(new LinearLayoutManager(this));
 
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
@@ -53,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONArray results = jsonObject.getJSONArray("results");
                     Log.i(TAG, "Results" + results.toString());
-                    movies.addAll(Movie.fromJSONArray(results));
-                    movieAdapter.notifyDataSetChanged();
-                    Log.i(TAG, "Movies" + movies.size());
+                    mmovies.addAll(Movie.fromJSONArray(results));
+                    mmovieAdapter.notifyDataSetChanged();
+                    Log.i(TAG, "Movies" + mmovies.size());
                 } catch (JSONException e) {
                     Log.e(TAG, "Hit json exception", e);
                 }

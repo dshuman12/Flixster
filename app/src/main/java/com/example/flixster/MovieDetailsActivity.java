@@ -13,27 +13,27 @@ import org.parceler.Parcels;
 
 public class MovieDetailsActivity extends AppCompatActivity {
 
-    Movie movie;
-    TextView tvTitle;
-    TextView tvOverview;
-    RatingBar rbVoteAverage;
+    Movie mmovie;
+    TextView mtvTitle;
+    TextView mtvOverview;
+    RatingBar mrbVoteAverage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
-        tvTitle = (TextView) findViewById(R.id.tvTitle);
-        tvOverview = (TextView) findViewById(R.id.tvOverview);
-        rbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
+        mtvTitle = (TextView) findViewById(R.id.tvTitle);
+        mtvOverview = (TextView) findViewById(R.id.tvOverview);
+        mrbVoteAverage = (RatingBar) findViewById(R.id.rbVoteAverage);
 
         // Unwrap the movie data passed through the intent
-        movie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
-        Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", movie.getTitle()));
+        mmovie = (Movie) Parcels.unwrap(getIntent().getParcelableExtra(Movie.class.getSimpleName()));
+        Log.d("MovieDetailsActivity", String.format("Showing details for '%s'", mmovie.getTitle()));
 
-        tvTitle.setText(movie.getTitle());
-        tvOverview.setText(movie.getOverview());
+        mtvTitle.setText(mmovie.getTitle());
+        mtvOverview.setText(mmovie.getOverview());
 
-        float voteAverage = movie.getVoteAverage().floatValue();
-        rbVoteAverage.setRating(voteAverage / 2.0f);
+        float voteAverage = mmovie.getVoteAverage().floatValue();
+        mrbVoteAverage.setRating(voteAverage / 2.0f);
     }
 }

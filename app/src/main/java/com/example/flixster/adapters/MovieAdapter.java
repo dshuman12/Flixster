@@ -25,12 +25,12 @@ import java.util.List;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
-    Context context;
-    List<Movie> movies;
+    Context mcontext;
+    List<Movie> mmovies;
 
     public MovieAdapter(Context context, List<Movie> movies) {
-        this.context = context;
-        this.movies = movies;
+        this.mcontext = context;
+        this.mmovies = movies;
     }
 
     // Usually involves inflating a layout XML and returning the holder
@@ -38,7 +38,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         Log.d("MovieAdapter", "onCreateViewHolder");
-        View movieView = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+        View movieView = LayoutInflater.from(mcontext).inflate(R.layout.item_movie, parent, false);
         return new ViewHolder(movieView);
     }
 
@@ -46,13 +46,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NotNull ViewHolder holder, int position) {
         Log.d("MovieAdapter", "onBindViewHolder" + position);
-        Movie movie = movies.get(position);
+        Movie movie = mmovies.get(position);
         holder.bind(movie);
     }
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return mmovies.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -78,7 +78,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             int placeholder;
             int width;
             int height;
-            if (context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            if (mcontext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
                 imageUrl = movie.getBackdropPath();
                 placeholder = R.drawable.flicks_backdrop_placeholder;
                 width = 1600;
@@ -90,7 +90,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
                 width = 200;
                 height = 300;
             }
-            Glide.with(context)
+            Glide.with(mcontext)
                 .load(imageUrl)
                 //.centerCrop()
                 //.transform(new RoundedCornersTransformation(30, 0))
@@ -105,12 +105,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             int position = getAdapterPosition();
             // Ensures a valid position
             if (position != RecyclerView.NO_POSITION) {
-                Movie movie = movies.get(position);
+                Movie movie = mmovies.get(position);
                 // Send data to the Movie Details Activity
-                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                Intent intent = new Intent(mcontext, MovieDetailsActivity.class);
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
                 // Shows the Movie Details page
-                context.startActivity(intent);
+                mcontext.startActivity(intent);
             }
         }
     }

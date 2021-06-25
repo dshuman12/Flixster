@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="#808b0000">
 
     <ImageView
         android:id="@+id/ivPoster"
@@ -13,6 +15,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
+        android:fadingEdge="horizontal"
+        android:requiresFadingEdge="vertical"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView

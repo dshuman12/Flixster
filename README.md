@@ -30,9 +30,9 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/oxYXQKh"  ><a href="//imgur.com/a/oxYXQKh">Walkthrough horizontal</a></blockquote>
+<img src='https://github.com/dshuman12/Flixster/blob/master/walkthrough_horizontal.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/PYhrsmG"  ><a href="//imgur.com/a/PYhrsmG">Walkthrough Vertical</a></blockquote>
+<img src='https://github.com/dshuman12/Flixster/blob/master/walkthrough_vertical.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [Kap](https://getkap.co/).
 
